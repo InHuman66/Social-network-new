@@ -1,0 +1,70 @@
+.bg_header {
+  background-color: cornflowerblue;
+  border-radius: 5px;
+  height: 65px;
+  margin-bottom: 25px;
+  .logo_position {
+    margin: auto 0;
+    .logo {
+      display: flex;
+      .img_logo {
+        margin-left: 10px;
+        width: 45px;
+        height: 45px;
+      }
+      .logo_txt {
+        font-size: 25px;
+        margin: auto 0;
+        margin-left: 10px;
+        color: whitesmoke;
+      }
+    }
+  }
+
+}
+.search_menu {
+  display: flex;
+  align-items: center;
+  .search {
+    display: flex;
+    align-items: center;
+    button {
+      border: none;
+      width: 30px;
+      height: 30px;
+    }
+    input {
+      border: none;
+      width: 200px;
+      height: 30px;
+    }
+  }
+}
+.header_menu {
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  a{
+    text-decoration: none;
+    padding: 0 10px;
+    color: whitesmoke;
+    font-weight: 800;
+    &:hover{
+      text-decoration: none;
+      color: coral;
+    }
+  }
+}
+.loginBlock {
+  display: flex;
+  align-items: center;
+  a{
+    text-decoration: none;
+    color: yellow;
+    font-weight: 800;
+    &:hover{
+      text-decoration: none;
+      color: coral;
+    }
+  }
+}
