@@ -1,0 +1,64 @@
+.profile {
+    .photoBar {
+      background-color: #EDEEF0FF;
+      border-radius: 15px;
+      width: 100%;
+      min-height: 300px;
+      .imgWrapper{
+        padding: 15px 15px 0 15px;
+        img{
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .menuPhotoBar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 15px;
+        button{
+          width: 150px;
+          height: 35px;
+          background-color: #6495EDFF;
+          border-radius: 10px;
+          border: none;
+          color: white;
+          font-size: 18px;
+          font-weight: 700;
+          &:hover{
+            color: #FFFF00FF;
+          }
+        }
+      }
+    }
+    .infoBlock{
+      .backGroundInfoBlock {
+        padding: 15px;
+        width: 100%;
+        min-height: 200px;
+        background-color: #EDEEF0FF;
+        border-radius: 15px;
+      }
+      .userName{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+          margin: 0;
+          font-weight: 600;
+        }
+      }
+      .userStatus{
+        display: flex;
+        align-items: center;
+        span{
+          font-weight: 600;
+        }
+        p{
+          font-size: 17px;
+          margin: 0;
+          padding-left: 10px;
+        }
+      }
+    }
+}
