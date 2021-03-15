@@ -1,0 +1,59 @@
+.selectedPage {
+  outline: -webkit-focus-ring-color auto 0;
+  font-weight: 700;
+  padding: 0 2px;
+  &:hover{
+    cursor: default;
+  }
+}
+.pageNormal{
+  outline: -webkit-focus-ring-color auto 0;
+  padding: 0 2px;
+  &:hover{
+    cursor: pointer;
+    color: blueviolet;
+  }
+}
+.pagination{
+  padding: 0;
+  display: flex;
+}
+.linkName {
+  outline: -webkit-focus-ring-color auto 0;
+  font-weight: 700;
+  color: #005F8EFF;
+  &:hover{
+    text-decoration: none;
+    color: blueviolet;
+  }
+}
+.liStyle{
+  padding: 0 3px;
+  outline: -webkit-focus-ring-color auto 0;
+  background-color: #EDEEF0FF;
+  text-align: center;
+  height: 25px;
+  min-width: 18px;
+  list-style-type: none;
+}
+
+.liNextBtn{
+  margin: 0 5px;
+  text-align: center;
+  list-style-type: none;
+  a{
+    outline: -webkit-focus-ring-color auto 0;
+    color: white !important;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 5px;
+    background-color:#6495EDFF ;
+    padding: 3px 20px;
+  }
+
+}
+.activePAge{
+  font-weight: 700;
+  color: black;
+  outline: -webkit-focus-ring-color auto 0px;
+}

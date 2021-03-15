@@ -1,0 +1,66 @@
+.userBlock {
+  margin-top: 20px;
+  background-color: #EDEEF0FF;
+  padding: 15px;
+  border-radius: 15px;
+  .ImgFollowBlock{
+    text-align: center;
+    a{
+      img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+  .contentBlock{
+    .personalInfoBlock{
+      h1{
+        margin: 0;
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
+    .description{
+      p{
+        margin: 0;
+      }
+    }
+  }
+}
+.btnFollow {
+  width: 150px;
+  height: 35px;
+  background-color: #6495EDFF;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  &:hover{
+    color: #FFFF00FF;
+  }
+  &:disabled{
+    color: #EDEEF0FF;
+    background: #6495EDC4;
+  }
+}
+.btnUnfollow{
+  width: 150px;
+  height: 35px;
+  background-color: #FF7171FF;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  &:hover{
+    color: #FFFF00FF;
+  }
+  &:disabled{
+    color: #EDEEF0FF;
+    background: #6495EDC4;
+  }
+}

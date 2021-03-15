@@ -1,0 +1,51 @@
+.messageWrapper {
+    max-width: 180px;
+    padding: 15px 10px;
+    background-color: red;
+    border-radius: 12px;
+    display: flex;
+    opacity: 0.9;
+    transition: opacity 1s;
+    visibility: inherit;
+
+}
+.messageWrapperDown {
+    visibility: collapse;
+    opacity: 0;
+    transition: opacity 1s, visibility 1s;
+    max-width: 180px;
+    padding: 15px 10px;
+    background-color: red;
+    border-radius: 12px;
+    display: flex;
+
+}
+.messageWrapper button, .messageWrapperDown button{
+    transition:  0.2s;
+    padding: 0;
+    margin: 0;
+    height: 20px;
+    width: 40px;
+    background-color: white;
+    border-radius: 45px;
+    color: #282c34;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+}
+.messageWrapper button:hover, .messageWrapperDown button:hover{
+    transition:  0.2s;
+    transform: translateY(-2px);
+    cursor: pointer;
+
+}
+.messageWrapper button:focus, .messageWrapperDown button:focus{
+    outline: none;
+}
+.messageWrapper p, .messageWrapperDown p{
+    margin-top: 25px;
+    margin-right: -20px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}

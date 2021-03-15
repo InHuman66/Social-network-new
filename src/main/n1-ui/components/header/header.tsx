@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import classes from "./header.module.scss";
 import logo from "../../../n4-materials/conversation.png"
 type propsType ={
-
+    login:string | null
+    logOut:()=>void
 }
 
 const Header:React.FC<propsType>= (props) => {
@@ -30,7 +31,7 @@ const Header:React.FC<propsType>= (props) => {
                     <a href={'aa'}>Contact</a>
                 </div>
                 <div className={classes.loginBlock + ' col col-1'}>
-                    <NavLink to={'/login'}>Login</NavLink>
+                    { props.login ? <NavLink to={'/login'} onClick={()=>{props.logOut()}}>{props.login}</NavLink>: <NavLink to={'/login'}>Login</NavLink> }
                 </div>
             </div>
         </div>

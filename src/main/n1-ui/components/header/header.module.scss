@@ -58,13 +58,16 @@
 .loginBlock {
   display: flex;
   align-items: center;
-  a{
+  a,p{
+    margin: 0;
     text-decoration: none;
     color: yellow;
     font-weight: 800;
     &:hover{
+      cursor: pointer;
       text-decoration: none;
       color: coral;
     }
   }
+
 }

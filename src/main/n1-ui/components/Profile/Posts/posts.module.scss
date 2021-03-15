@@ -1,0 +1,40 @@
+.postsBlock {
+  background-color: #EDEEF0FF;
+  border-radius: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  p{
+    color: white;
+    font-weight: 600;
+    font-size: 19px;
+  }
+  .posts{
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #B8B5FFFF;
+  }
+  textarea{
+    border: none;
+    background-color: white;
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    padding: 10px;
+    height: 90px;
+
+  }
+  button{
+    width: 150px;
+    height: 35px;
+    background-color: #6495EDFF;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    &:hover{
+      color: #FFFF00FF;
+    }
+  }
+}

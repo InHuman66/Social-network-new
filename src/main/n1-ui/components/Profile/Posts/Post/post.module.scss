@@ -1,0 +1,22 @@
+.post {
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #B8B5FFFF;
+  .info{
+    img{
+      border: none;
+      border-radius: 5px;
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+    p{
+      padding-left: 20px;
+      color: black;
+    }
+  }
+  .like{
+    color: black;
+  }
+}

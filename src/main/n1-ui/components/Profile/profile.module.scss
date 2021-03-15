@@ -1,5 +1,6 @@
 .profile {
     .photoBar {
+      padding-bottom: 20px;
       background-color: #EDEEF0FF;
       border-radius: 15px;
       width: 100%;
@@ -11,12 +12,12 @@
           object-fit: cover;
         }
       }
-      .menuPhotoBar{
+      .followedBlock{
         display: flex;
         align-items: center;
         justify-content: center;
         padding-top: 15px;
-        button{
+        .btnFollow {
           width: 150px;
           height: 35px;
           background-color: #6495EDFF;
@@ -27,6 +28,27 @@
           font-weight: 700;
           &:hover{
             color: #FFFF00FF;
+          }
+          &:disabled{
+            color: #EDEEF0FF;
+            background: #6495EDC4;
+          }
+        }
+        .btnUnfollow{
+          width: 150px;
+          height: 35px;
+          background-color: #FF7171FF;
+          border-radius: 10px;
+          border: none;
+          color: white;
+          font-size: 18px;
+          font-weight: 700;
+          &:hover{
+            color: #FFFF00FF;
+          }
+          &:disabled{
+            color: #EDEEF0FF;
+            background: #6495EDC4;
           }
         }
       }
@@ -50,8 +72,8 @@
       }
       .userStatus{
         display: flex;
-        align-items: center;
         span{
+          white-space: nowrap;
           font-weight: 600;
         }
         p{
