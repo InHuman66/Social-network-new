@@ -40,6 +40,10 @@ type TypeSetIsFollowing={
     type: 'SETISFOLLOWING'
     follow:boolean
 }
+type TypeSetPhotos={
+    type: 'SET-PHOTOS'
+    photos:object
+}
 
 const initialState = {
     profileId: 0,
@@ -65,6 +69,9 @@ export const profileReducer = (state: InitialStateTypeProfile = initialState, ac
         }
         case 'SETISFOLLOWING': {
             return  {...state, isFollowing: action.follow};
+        }
+        case 'SET-PHOTOS': {
+            return  {...state, profileDataInfo: {...state.profileDataInfo , photos: action.photos}};
         }
         default:
             return state
@@ -92,6 +99,12 @@ export  const setIsFollowingAC = (follow:boolean):TypeSetIsFollowing=>{
     return {
         type:'SETISFOLLOWING',
         follow: follow
+    }
+}
+export  const setPhotos = (photos:object):TypeSetPhotos=>{
+    return {
+        type:'SET-PHOTOS',
+        photos:photos
     }
 }
 export  const  getUserProfile = (userId:string)=>{
@@ -159,6 +172,19 @@ export  const  unFollowMeTC = (userId:number)=>{
             })
             .catch(()=>{
                 dispatch(setFollowingProgress(false, userId))
+            })
+    }
+}
+export  const  updatePhotoTC = (photo:Blob)=>{
+    return (dispatch:Dispatch)=>{
+        profileAPI.updatePhoto(photo)
+            .then((response) =>{
+                if (response.data.resultCode === 0 ){
+                    dispatch(setPhotos(response.data.data.photos))
+                    // console.log(response.data.data.photos)
+                }
+            })
+            .catch(()=>{
             })
     }
 }

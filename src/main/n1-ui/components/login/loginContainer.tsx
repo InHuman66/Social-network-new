@@ -5,8 +5,6 @@ import { Redirect } from 'react-router-dom';
 import Login from './Login';
 import { AppRootStateType } from '../../../n2-bll/n1-state/redux-state';
 import { LoginMeTC } from '../../../n2-bll/n2-reducers/auth-reducer';
-// import {AppRootStateType} from "../../Redax/redux-store";
-// import {LoginMeTC} from "../../Redax/auth-reducer";
 
 export type FormikValuesType ={
     email: string
@@ -17,7 +15,7 @@ export type FormikValuesType ={
 
 const LoginContainer= () => {
     const isLoading= useSelector<AppRootStateType, boolean>(state => state.authReducer.loading)
-    const isAuth= useSelector<AppRootStateType, boolean | string>(state => state.authReducer.isAuth)
+    const isAuth= useSelector<AppRootStateType, boolean | null>(state => state.authReducer.isAuth)
     const userId= useSelector<AppRootStateType, number | null>(state => state.authReducer.data.id)
     const dispatch = useDispatch()
 

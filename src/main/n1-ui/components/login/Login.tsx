@@ -1,8 +1,8 @@
 import React from "react";
 import { FormikProps } from "formik";
-import { FormikValuesType } from "./LoginConatainer";
-import classes from "./loginStyle.module.css";
+import classes from "./loginStyle.module.scss";
 import LoadingAnim from "../../features/loading/LoadingAnim";
+import { FormikValuesType } from "./loginContainer";
 
 type LoginType={
     formik: FormikProps<FormikValuesType>

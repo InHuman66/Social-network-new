@@ -5,9 +5,11 @@ import HeaderContainer from "./main/n1-ui/components/header/headerContainer";
 import ProfileContainer from './main/n1-ui/components/Profile/profileContainer';
 import SideBarContainer from "./main/n1-ui/components/sideBar/sideBarContainer";
 import UsersContainer from './main/n1-ui/components/Users/usersContainer';
-import LoginContainer from "./main/n1-ui/components/login/LoginConatainer";
 import {useDispatch} from "react-redux";
 import {authMeTC} from "./main/n2-bll/n2-reducers/auth-reducer";
+import EditProfileContainer from "./main/n1-ui/components/edintProfile/editProfileContainer";
+import LoginContainer from './main/n1-ui/components/login/loginContainer';
+
 
 function App() {
     const dispatch = useDispatch()
@@ -33,6 +35,9 @@ function App() {
                               />
                               <Route path={'/users'} render={()=>
                                   <UsersContainer/>
+                              }/>
+                              <Route path={'/edit'} render={()=>
+                                  <EditProfileContainer/>
                               }/>
                           </div>
                       </div>

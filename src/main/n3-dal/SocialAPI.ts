@@ -49,6 +49,15 @@ export const  profileAPI ={
     isFollowing(userId:number){
         return instance.get('follow/' + userId)
     },
+    updatePhoto(photoData:Blob){
+        const formData = new FormData();
+        formData.append("image", photoData)
+        return instance.put('profile/photo', formData,{
+            headers:{
+                'Content-Type': 'multipart/form-data'
+            }
+        } )
+    },
 }
 export const  authUser ={
     authUserEnter(){

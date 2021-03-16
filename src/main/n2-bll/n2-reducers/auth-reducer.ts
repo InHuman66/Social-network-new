@@ -10,6 +10,10 @@ type setLading ={
     type :'SET-LOADING'
     value:boolean
 }
+type setISAuth ={
+    type :'SET-IS-AUTH'
+    value:boolean | null
+}
 export type stateData ={
     id: number | null
     email: string | null
@@ -22,7 +26,7 @@ const initialState = {
         email:null,
         login: null,
     } as stateData,
-    isAuth: false,
+    isAuth: null,
     loading: false,
 }
 type ActionsType = any
@@ -37,6 +41,9 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
 
         case "SET-LOADING":{
             return {...state, loading: action.value}
+        }
+        case "SET-IS-AUTH":{
+            return {...state, isAuth: action.value}
         }
         default:
             return state
@@ -53,6 +60,12 @@ export  const setUserData= (data:stateData, isAuth:boolean):setUserDataType=>{
 export  const setLoading= (value:boolean):setLading=>{
     return {
         type:'SET-LOADING',
+        value: value
+    }
+}
+export  const setIsAuth= (value:null | boolean):setISAuth=>{
+    return {
+        type:'SET-IS-AUTH',
         value: value
     }
 }
@@ -87,11 +100,14 @@ export  const LoginMeTC =(login:string, password: string, rememberMe:boolean)=>{
 }
 export  const logOutTC =()=>{
     return (dispatch:Dispatch)=>{
+        let userState = {...initialState}
+        dispatch(setIsAuth(null))
         authUser.logOut()
             .then((response) =>{
                 if (response.data.resultCode === 0){
                     dispatch(setUserData({id: null,  email: null, login: null}, false))
                 }
+                dispatch(setIsAuth(userState.isAuth))
             })
     }
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import LoginContainer from '../login/loginContainer';
 import classes from "./sideBar.module.scss";
+
 type propsType ={
     userId:number | null
-    isAuth:boolean
+    isAuth:boolean | null
 }
 
 const SideBar:React.FC<propsType>= (props) => {
@@ -12,6 +14,9 @@ const SideBar:React.FC<propsType>= (props) => {
         userId = ''
     }else {
         userId = props.userId
+    }
+    if (props.isAuth === false){
+        return <LoginContainer/>
     }
     return (
         <div className={classes.side_bar}>
