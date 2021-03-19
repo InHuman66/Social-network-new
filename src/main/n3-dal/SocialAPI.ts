@@ -15,6 +15,25 @@ type GetUSersType ={
     error: null | string
 }
 
+type updateDataProfileType = {
+    aboutMe:string,
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string | null
+    fullName: string | null
+    contacts:{
+        github:string | null
+        vk: string | null
+        facebook: string | null
+        instagram: string | null
+        twitter: string | null
+        website: string | null
+        youtube: string | null
+        mainLink: string | null
+    }
+
+}
+
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -58,6 +77,9 @@ export const  profileAPI ={
             }
         } )
     },
+    updateProfileData(data:updateDataProfileType){
+        return instance.put('profile', data)
+    }
 }
 export const  authUser ={
     authUserEnter(){

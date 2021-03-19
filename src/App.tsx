@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 import {authMeTC} from "./main/n2-bll/n2-reducers/auth-reducer";
 import EditProfileContainer from "./main/n1-ui/components/edintProfile/editProfileContainer";
 import LoginContainer from './main/n1-ui/components/login/loginContainer';
+import EditProfileHOC from "./main/n1-ui/components/edintProfile/editProfileHoc";
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
                                   <UsersContainer/>
                               }/>
                               <Route path={'/edit'} render={()=>
-                                  <EditProfileContainer/>
+                                  <EditProfileHOC/>
                               }/>
                           </div>
                       </div>

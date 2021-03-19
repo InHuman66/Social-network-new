@@ -35,7 +35,6 @@ const ProfileContainer= () => {
             dispatch(isFollowingTC(Number(params.userId)))
             dispatch(getUserProfile(params.userId))
             dispatch(getUserStatus(params.userId))
-            console.log(params.userId)
         }
     },[params.userId])
     const [modalIsOpen,setIsOpen] = React.useState(false);
@@ -56,7 +55,7 @@ const ProfileContainer= () => {
         }
     }
     return (
-        <Profile closeModal={closeModal} modalIsOpen={modalIsOpen} openModal={openModal} changePhoto={changePhoto} userId={userId} followingInProgress={followingInProgress} unFollow={unFollow} follow={follow} followed={userData.isFollowing} userStatus={userData.profileStatus} profileData={userData.profileDataInfo}/>
+        <Profile isLoadingPhoto={userData.isLoadingPhoto} isLoading={userData.isLoading} closeModal={closeModal} modalIsOpen={modalIsOpen} openModal={openModal} changePhoto={changePhoto} userId={userId} followingInProgress={followingInProgress} unFollow={unFollow} follow={follow} followed={userData.isFollowing} userStatus={userData.profileStatus} profileData={userData.profileDataInfo}/>
     )
     ;
 }

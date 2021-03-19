@@ -17,7 +17,7 @@ const UsersContainer= () => {
         if(userData.users.length === 0){
             dispatch(getUsersThunkCreator(userData.currentPage, userData.pageSize))
         }
-    })
+    },[])
     let pagesCount = Math.ceil( userData.totalUsersCount/ userData.pageSize)
 
     let onPageChange=(data:{selected:number})=>{
@@ -31,7 +31,7 @@ const UsersContainer= () => {
         dispatch(unFollowTC(id))
     }
     return (
-        <Users followingInProgress={userData.followingInProgress} follow={follow } unFollow={unFollow} pageCount={pagesCount} onPageChanged={onPageChange} users={userData.users} currentPage={userData.currentPage} />
+        <Users isLoadingUsers={userData.isLoadingUsers} followingInProgress={userData.followingInProgress} follow={follow } unFollow={unFollow} pageCount={pagesCount} onPageChanged={onPageChange} users={userData.users} currentPage={userData.currentPage} />
     )
     ;
 }

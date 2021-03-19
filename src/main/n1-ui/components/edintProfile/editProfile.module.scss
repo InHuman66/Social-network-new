@@ -3,32 +3,45 @@
   border-radius: 15px;
   width: 100%;
   min-height: 300px;
-  padding: 15px;
+  .wrapperForLoadingAnim{
+    padding: 15px;
+    position: relative;
+    .wrapperLoading{
+      top: 0;
+      transition: 0.4s;
+      background: linear-gradient(180deg,rgba(45,45,58,.60) 0%,rgba(43,43,53,.60) 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      border-radius: 15px;
+    }
+  }
   .InputWrapper{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     p{
-      margin: 0;
+      margin-bottom: 0;
       color: #79657EFF;
       font-weight: 700;
-    }
-    input{
-      margin-left: 10px;
-      border-radius: 5px;
-      border: 1px solid #D3D9DEFF;
-      width: 300px;
-      height: 30px;
-      padding-left: 5px;
-      &:focus{
-        outline: none;
-      }
+      margin-right: 10px;
     }
     .checkBox{
-      width: 30px !important;
+      width: 25px !important;
+      height: 25px;
       &:hover{
         cursor: pointer;
       }
+    }
+    .nameInputWrapper{
+      width: 200px;
+      display: flex;
+      justify-content: flex-end;
     }
   }
   .buttonSubmit{
@@ -40,9 +53,71 @@
     color: white;
     font-size: 18px;
     font-weight: 700;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     &:hover{
       text-decoration: none;
       color: #FFFF00FF;
     }
+  }
+  .EditMenuBackGround{
+    margin-top: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+    padding: 5px 0;
+    background-color: white;
+    min-height: 200px;
+    width: 100%;
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    a{
+      padding:5px 0;
+      color: #2A5885FF;
+      width: 100%;
+      text-align: center;
+      &:hover{
+        text-decoration: none;
+        background-color: #DFE0DFFF;
+      }
+    }
+  }
+}
+.active {
+  text-decoration: none;
+  background-color: #DFE0DFFF;
+  border-left: 2px blue solid;
+}
+.error{
+  position: absolute;
+  margin-top: -4px;
+  p{
+    margin-top: 2px;
+    color: red !important;
+    font-size: 14px !important;
+    font-weight: 400!important;
+  }
+}
+.inputStyle{
+  border-radius: 5px;
+  border: 1px solid #D3D9DEFF;
+  width: 300px;
+  height: 30px;
+  padding-left: 5px;
+  &:focus{
+    outline: none;
+  }
+}
+.inputStyleError{
+  border-radius: 5px;
+  border: 1px solid red;
+  width: 300px;
+  height: 30px;
+  padding-left: 5px;
+  &:focus{
+    outline: none;
   }
 }

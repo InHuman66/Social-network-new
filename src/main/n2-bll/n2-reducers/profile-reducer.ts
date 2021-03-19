@@ -1,6 +1,7 @@
 import { Dispatch } from "redux"
 import {profileAPI, usersAPI} from "../../n3-dal/SocialAPI";
 import {followAC, setFollowingProgress, unFollowAC} from "./users-reducer";
+import {FormikValuesEditProfileType} from "../../n1-ui/components/edintProfile/editProfileContainer";
 
 export type ProfileInfoType ={
     aboutMe: string | null
@@ -42,7 +43,18 @@ type TypeSetIsFollowing={
 }
 type TypeSetPhotos={
     type: 'SET-PHOTOS'
-    photos:object
+    photos:{
+        small: null | string
+        large: null | string
+    }
+}
+type TypeSetIsLoading ={
+    type: 'IS-LOADING'
+    load:boolean
+}
+type TypeSetIsLoadingPhoto ={
+    type: 'IS-LOADING-PHOTO'
+    load:boolean
 }
 
 const initialState = {
@@ -50,11 +62,19 @@ const initialState = {
     profileDataInfo: {} as ProfileInfoType,
     profileStatus: "",
     isFollowing: false,
+    isLoading: false,
+    isLoadingPhoto:false,
 
 }
-type ActionsType = any
-export type InitialStateTypeProfile = typeof initialState
+type ActionsType = TypeSetIsLoading |
+    TypeSetPhotos |
+    TypeSetIsFollowing |
+    TypeSetProfileStatus |
+    TypeSetProfileID |
+    TypeSetProfileInfo |
+    TypeSetIsLoadingPhoto
 
+export type InitialStateTypeProfile = typeof initialState
 
 export const profileReducer = (state: InitialStateTypeProfile = initialState, action: ActionsType): InitialStateTypeProfile => {
     switch (action.type) {
@@ -69,6 +89,12 @@ export const profileReducer = (state: InitialStateTypeProfile = initialState, ac
         }
         case 'SETISFOLLOWING': {
             return  {...state, isFollowing: action.follow};
+        }
+        case 'IS-LOADING': {
+            return  {...state, isLoading: action.load};
+        }
+        case 'IS-LOADING-PHOTO': {
+            return  {...state, isLoadingPhoto: action.load};
         }
         case 'SET-PHOTOS': {
             return  {...state, profileDataInfo: {...state.profileDataInfo , photos: action.photos}};
@@ -101,7 +127,19 @@ export  const setIsFollowingAC = (follow:boolean):TypeSetIsFollowing=>{
         follow: follow
     }
 }
-export  const setPhotos = (photos:object):TypeSetPhotos=>{
+export  const setIsLoadingAC = (load:boolean):TypeSetIsLoading=>{
+    return {
+        type:'IS-LOADING',
+        load:load
+    }
+}
+export  const setIsLoadingPhotoAC = (load:boolean):TypeSetIsLoadingPhoto=>{
+    return {
+        type:'IS-LOADING-PHOTO',
+        load:load
+    }
+}
+export  const setPhotos = (photos:{ small: null | string ,large: null | string }):TypeSetPhotos=>{
     return {
         type:'SET-PHOTOS',
         photos:photos
@@ -109,10 +147,12 @@ export  const setPhotos = (photos:object):TypeSetPhotos=>{
 }
 export  const  getUserProfile = (userId:string)=>{
     return (dispatch:Dispatch)=>{
+        dispatch(setIsLoadingAC(true))
         profileAPI.getUserProfile(userId)
             .then((response) =>{
                 dispatch(setProfileInfoAC(response.data))
                 dispatch(setProfileIdAC(response.data.userId))
+                dispatch(setIsLoadingAC(false))
             })
     }
 }
@@ -177,14 +217,51 @@ export  const  unFollowMeTC = (userId:number)=>{
 }
 export  const  updatePhotoTC = (photo:Blob)=>{
     return (dispatch:Dispatch)=>{
+        dispatch(setIsLoadingPhotoAC(true))
         profileAPI.updatePhoto(photo)
             .then((response) =>{
                 if (response.data.resultCode === 0 ){
                     dispatch(setPhotos(response.data.data.photos))
-                    // console.log(response.data.data.photos)
+                    dispatch(setIsLoadingPhotoAC(false))
                 }
+                dispatch(setIsLoadingPhotoAC(false))
             })
             .catch(()=>{
+                dispatch(setIsLoadingPhotoAC(false))
+            })
+    }
+}
+export  const  updateUserProfileData= (id:number, data:FormikValuesEditProfileType)=>{
+    return (dispatch:Dispatch)=>{
+        let newData = {
+            aboutMe: data.aboutMe,
+            userId:id,
+            lookingForAJob: data.lookingForAJob,
+            lookingForAJobDescription: data.lookingForAJobDescription,
+            fullName: data.fullName,
+            contacts:{
+                github: data.github,
+                vk: data.vk,
+                facebook: data.facebook,
+                instagram: data.instagram,
+                twitter: data.twitter,
+                website: data.website,
+                youtube: data.youtube,
+                mainLink: data.mainLink
+            }
+        }
+        dispatch(setIsLoadingAC(true))
+        console.log(newData)
+        profileAPI.updateProfileData(newData)
+            .then((response) =>{
+                if (response.data.resultCode === 0){
+                    dispatch(getUserProfile(id.toString()) as any)
+                    dispatch(setIsLoadingAC(false))
+                }
+                dispatch(setIsLoadingAC(false))
+            })
+            .catch(()=>{
+                dispatch(setIsLoadingAC(false))
             })
     }
 }

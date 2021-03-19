@@ -34,6 +34,10 @@ type TypeSetUsersCount = {
     type: 'SETUSERSCOUNT'
     usersCount: number
 }
+type TypeSetISLoadingUsers = {
+    type: 'SET-IS-LOADING-USERS'
+    load: boolean
+}
 type TypeSetFollowingProgress = {
     type: 'TOGGLE_IS_FOLLOWING_PROGRESS'
     value: boolean
@@ -46,7 +50,7 @@ const initialState = {
     pageSize: 5,
     currentPage: 1,
     totalUsersCount: 19,
-
+    isLoadingUsers: false
 
 }
 type ActionsType = TypeSetFollowingProgress |
@@ -54,7 +58,8 @@ type ActionsType = TypeSetFollowingProgress |
     TypeSetCurrentPage |
     TypeSetUsers |
     TypeUnFollow |
-    TypeFollow
+    TypeFollow |
+    TypeSetISLoadingUsers
 
 export type InitialStateTypeUsers = typeof initialState
 
@@ -85,6 +90,10 @@ export const usersReducer = (state: InitialStateTypeUsers = initialState, action
         }
         case 'SETUSERS' : {
             return {...state, users: action.users}
+
+        }
+        case 'SET-IS-LOADING-USERS' : {
+            return {...state, isLoadingUsers: action.load}
 
         }
         case 'SETCURRENTPAGE' : {
@@ -145,12 +154,20 @@ export const setFollowingProgress = (value:boolean , id:number): TypeSetFollowin
         id: id,
     }
 }
+export const setIsLoadingUsersAC = (load: boolean): TypeSetISLoadingUsers => {
+    return {
+        type: 'SET-IS-LOADING-USERS',
+        load: load,
+    }
+}
 export  const  getUsersThunkCreator = (currentPage:number, pageSize:number)=>{
     return (dispatch: Dispatch)=>{
+        dispatch(setIsLoadingUsersAC(true))
         usersAPI.getUsers(currentPage, pageSize)
             .then((data) =>{
                 dispatch(setUsersAC(data.items))
                 dispatch(setUsersCount(data.totalCount))
+                dispatch(setIsLoadingUsersAC(false))
             })
     }
 }

@@ -30,10 +30,10 @@ const initialState = {
     loading: false,
 }
 type ActionsType = any
-type InitialStateType = typeof initialState
+export type InitialStateTypeAuth = typeof initialState
 
 
-export const authReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const authReducer = (state: InitialStateTypeAuth = initialState, action: ActionsType): InitialStateTypeAuth => {
     switch (action.type) {
         case "SET-USERDATA":{
             return {...state, data: action.data, isAuth: action.isAuth}
@@ -76,7 +76,6 @@ export  const authMeTC =()=>{
             .then((response) =>{
                 if (response.data.resultCode === 0){
                     dispatch(setUserData(response.data.data, true))
-                    console.log(response.data)
                 }
             })
     }
@@ -90,7 +89,6 @@ export  const LoginMeTC =(login:string, password: string, rememberMe:boolean)=>{
                     dispatch(setLoading(false))
                     // @ts-ignore
                     dispatch(authMeTC())
-                    console.log(response.data)
                 }else {
                     console.log(response.data, 'lox')
                     dispatch(setLoading(false))
