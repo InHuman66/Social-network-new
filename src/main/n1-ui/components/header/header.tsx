@@ -31,7 +31,7 @@ const Header:React.FC<propsType>= (props) => {
                     <a href={'aa'}>Contact</a>
                 </div>
                 <div className={classes.loginBlock + ' col col-1'}>
-                    { props.login ? <NavLink to={'/login'} onClick={()=>{props.logOut()}}>{props.login}</NavLink>: <NavLink to={'/login'}>Login</NavLink> }
+                    { props.login ? <NavLink to={'/login'} onClick={()=>{props.logOut()}}>Log out</NavLink>: <NavLink to={'/login'}>Login</NavLink> }
                 </div>
             </div>
         </div>

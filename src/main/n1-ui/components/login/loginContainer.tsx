@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useFormik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import { Redirect } from 'react-router-dom';
@@ -40,8 +40,6 @@ const LoginContainer= () => {
             }
             if (!values.password) {
                 errors.password = 'Required';
-            } else if (values.password.length < 8) {
-                errors.password = 'Password must be at least 8 characters long';
             }
 
             return errors;

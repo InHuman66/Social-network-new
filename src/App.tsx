@@ -5,18 +5,26 @@ import HeaderContainer from "./main/n1-ui/components/header/headerContainer";
 import ProfileContainer from './main/n1-ui/components/Profile/profileContainer';
 import SideBarContainer from "./main/n1-ui/components/sideBar/sideBarContainer";
 import UsersContainer from './main/n1-ui/components/Users/usersContainer';
-import {useDispatch} from "react-redux";
-import {authMeTC} from "./main/n2-bll/n2-reducers/auth-reducer";
-import EditProfileContainer from "./main/n1-ui/components/edintProfile/editProfileContainer";
+import {useDispatch, useSelector} from "react-redux";
 import LoginContainer from './main/n1-ui/components/login/loginContainer';
 import EditProfileHOC from "./main/n1-ui/components/edintProfile/editProfileHoc";
+import {initialiseAppTC} from "./main/n2-bll/n2-reducers/app-reducer";
+import {AppRootStateType} from "./main/n2-bll/n1-state/redux-state";
+
+import InitializingAnim from "./main/n1-ui/features/Initializing/InitializingAnim";
 
 
 function App() {
+    const initial= useSelector<AppRootStateType, boolean>(state => state.appReducer.initialized)
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(authMeTC())
+        dispatch(initialiseAppTC())
     },[])
+    if (!initial){
+        return <div>
+            <InitializingAnim/>
+        </div>
+    }
   return (
     <div>
       <div className={'container'}>

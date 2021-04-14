@@ -1,5 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware  from "redux-thunk"
+import { appReducer } from "../n2-reducers/app-reducer";
 import { authReducer } from "../n2-reducers/auth-reducer";
 import { headerReducer } from "../n2-reducers/header-reducer";
 import { profileReducer } from "../n2-reducers/profile-reducer";
@@ -15,6 +16,7 @@ let  reducersBatch = combineReducers({
     usersReducer: usersReducer,
     profileReducer:profileReducer,
     authReducer:authReducer,
+    appReducer:appReducer,
 });
 
 

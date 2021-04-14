@@ -7,9 +7,7 @@ import { FormikValuesType } from "./loginContainer";
 type LoginType={
     formik: FormikProps<FormikValuesType>
     isLoading: boolean
-    // messageError: boolean
 }
-// onBlur={props.formik.handleBlur}
 const Login:React.FC<LoginType> =(props)=>{
     return (
         <div className={classes.positionLoginBlock +' container'} >
@@ -35,6 +33,11 @@ const Login:React.FC<LoginType> =(props)=>{
                         </div>
                     </form>
                     {/*<ErrorMessage showMessage={true}/>*/}
+                    <div className={classes.block_test}>
+                        <h1>For test</h1>
+                        <p>Email: free@samuraijs.com</p>
+                        <p>Password: free</p>
+                    </div>
                 </div>
             </div>
         </div>

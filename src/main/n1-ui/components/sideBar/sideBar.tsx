@@ -15,7 +15,7 @@ const SideBar:React.FC<propsType>= (props) => {
     }else {
         userId = props.userId
     }
-    if (props.isAuth === false){
+    if (!props.isAuth){
         return <LoginContainer/>
     }
     return (

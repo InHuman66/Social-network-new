@@ -70,16 +70,15 @@ export  const setIsAuth= (value:null | boolean):setISAuth=>{
     }
 }
 
-export  const authMeTC =()=>{
-    return (dispatch:Dispatch)=>{
-        authUser.authUserEnter()
+export  const authMeTC =()=> (dispatch:Dispatch)=>{
+        return authUser.authUserEnter()
             .then((response) =>{
                 if (response.data.resultCode === 0){
                     dispatch(setUserData(response.data.data, true))
                 }
             })
     }
-}
+
 export  const LoginMeTC =(login:string, password: string, rememberMe:boolean)=>{
     return (dispatch:Dispatch)=>{
         dispatch(setLoading(true))
