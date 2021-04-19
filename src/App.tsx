@@ -12,6 +12,7 @@ import {initialiseAppTC} from "./main/n2-bll/n2-reducers/app-reducer";
 import {AppRootStateType} from "./main/n2-bll/n1-state/redux-state";
 
 import InitializingAnim from "./main/n1-ui/features/Initializing/InitializingAnim";
+import InDevelopment from "./main/n1-ui/components/InDevelopment/inDevelopment";
 
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
                               }/>
                               <Route path={'/edit'} render={()=>
                                   <EditProfileHOC/>
+                              }/>
+                              <Route path={'/inDevelopment'} render={()=>
+                                  <InDevelopment/>
                               }/>
                           </div>
                       </div>

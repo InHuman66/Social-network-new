@@ -37,28 +37,28 @@ const SideBar:React.FC<propsType>= (props) => {
                 </div>
                 <div className={classes.button}>
                     <NavLink
-                        to="/messages"
+                        to="/inDevelopment"
                         className={classes.txt_s}
                         activeClassName={classes.active}
                     >Messages</NavLink>
                 </div>
                 <div className={classes.button}>
                     <NavLink
-                        to="/news"
+                        to="/inDevelopment"
                         className={classes.txt_s}
                         activeClassName={classes.active}
                     >News</NavLink>
                 </div>
                 <div className={classes.button}>
                     <NavLink
-                        to="/music"
+                        to="/inDevelopment"
                         className={classes.txt_s}
                         activeClassName={classes.active}
                     >Music</NavLink>
                 </div>
                 <div className={classes.button}>
                     <NavLink
-                        to="/settings"
+                        to="/inDevelopment"
                         className={classes.txt_s}
                         activeClassName={classes.active}
                     >Settings</NavLink>

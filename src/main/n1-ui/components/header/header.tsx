@@ -25,10 +25,10 @@ const Header:React.FC<propsType>= (props) => {
                     </div>
                 </div>
                 <div className={classes.header_menu + ' col col-4'}>
-                    <a href={'a'}>Home</a>
-                    <a href={'aa'}>Newsfeed</a>
-                    <a href={'aa'}>All&nbsp;Pages</a>
-                    <a href={'aa'}>Contact</a>
+                    <NavLink to={'/inDevelopment'}>Home</NavLink>
+                    <NavLink to={'/inDevelopment'}>Newsfeed</NavLink>
+                    <NavLink to={'/inDevelopment'}>All&nbsp;Pages</NavLink>
+                    <NavLink to={'/inDevelopment'}>Contact</NavLink>
                 </div>
                 <div className={classes.loginBlock + ' col col-1'}>
                     { props.login ? <NavLink to={'/login'} onClick={()=>{props.logOut()}}>Log out</NavLink>: <NavLink to={'/login'}>Login</NavLink> }
